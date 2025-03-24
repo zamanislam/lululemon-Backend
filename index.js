@@ -2,21 +2,20 @@ const express = require("express");
 const connect = require("./config/db");
 const userRouter = require("./routes/user.route");
 const productRouter = require("./routes/blog.route");
-const cors = require("cors");  // ✅ Import CORS
+const app = express();
+// const cors = require("cors");
 
 require("dotenv").config();
 
-const app = express();
+// app.use(cors({
+//   origin:process.env.FRONTEND_URL
+// }))
 
-// ✅ Enable CORS for frontend
-app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:5173",  // Allow frontend
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true  // Allow cookies if needed
-}));
 
 // Body parser middleware
 app.use(express.json());
+
+
 
 // Routes
 app.use("/users", userRouter);
