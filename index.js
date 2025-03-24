@@ -3,13 +3,13 @@ const connect = require("./config/db");
 const userRouter = require("./routes/user.route");
 const productRouter = require("./routes/blog.route");
 const app = express();
-// const cors = require("cors");
+const cors = require("cors");
 
 require("dotenv").config();
 
-// app.use(cors({
-//   origin:process.env.FRONTEND_URL
-// }))
+app.use(cors({
+  origin:'http://localhost:3000'                                     //process.env.FRONTEND_URL
+}))
 
 
 // Body parser middleware
